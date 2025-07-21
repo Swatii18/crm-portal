@@ -1,105 +1,124 @@
-# CRM Portal (React + Redux)
+CRM Portal (React + Redux)
+A simple CRM (Customer Relationship Management) portal built using React, Redux, and Material UI.
+It allows Admins to manage customers (Add/Edit/Delete) and Users to view customers in read-only mode.
 
-A **Customer Relationship Management (CRM)** portal built with **React, Redux, Material UI**, and **localStorage persistence**.  
-Supports **Admin & User roles**, secure authentication, and CRUD operations for customer management.
+✨ Features
+✅ User Authentication (Signup/Login)
+✅ Role-based Access Control
+✅ Admin → Can Add, Edit, Delete Customers
+✅ User → Read-only access
+✅ Customer Search & Filter
+✅ Persistent Data with localStorage
+✅ Protected Dashboard (only logged-in users can access)
+✅ Responsive Material UI Design
 
----
+🛠️ Tech Stack
+React.js → Frontend library
 
-## 🚀 Features
+Redux → State management
 
-✅ **User Authentication**
-- Signup (only Users by default)
-- Login with role-based access
-- Fixed **Admin credentials**:  
-  - **Email:** `itzzswatii@gmail.com`  
-  - **Password:** `12345678##@@`
-- Only Admins can manage customers  
+Material UI (MUI) → UI components
 
-✅ **Role-Based Dashboard**
-- **Admin** → Add, Edit, Delete customers  
-- **User** → Read-only access  
+React Router v6 → Routing
 
-✅ **Customer Management**
-- Search & filter customers  
-- Edit existing customer data  
-- Delete customers  
-- Data persists in **localStorage**
+Redux Thunk → Async state handling
 
-✅ **Protected Routes**
-- Login required to access the dashboard  
-- Unauthorized users redirected to login  
+localStorage → Data persistence
 
-✅ **Branches**
-- `dev` → Active development  
-- `prod` → Stable, production-ready code  
-
-✅ **Future Enhancements**
-- API backend integration  
-- Database persistence  
-- Toast notifications  
-- Deployment with CI/CD  
-
----
-
-## 🛠️ Tech Stack
-
-- **React 18**
-- **Redux Toolkit / Redux**
-- **React Router v6**
-- **Material UI (MUI)**  
-- **localStorage persistence**
-
----
-
-## 📂 Project Structure
-
+📂 Project Structure
+csharp
+Copy
+Edit
 crm-portal/
-├── src/
-│ ├── components/ # Reusable UI components
-│ ├── pages/ # Login & Signup pages
-│ ├── redux/ # State management
-│ ├── App.js # Main routes & Dashboard
-│ └── index.js # Entry point
-├── public/
+│── src/
+│   ├── components/         # Reusable UI components
+│   │   ├── CustomerForm.js
+│   │   └── CustomerList.js
+│   │
+│   ├── pages/              # Auth Pages
+│   │   ├── LoginPage.js
+│   │   └── SignUpPage.js
+│   │
+│   ├── redux/              # Redux State Management
+│   │   ├── actions/
+│   │   ├── reducers/
+│   │   └── store.js
+│   │
+│   ├── utils/              # Helpers (auth, localStorage, etc.)
+│   ├── App.js              # Main App Component
+│   └── index.js            # Entry point
+│
+├── public/                 # Static files
 ├── package.json
 └── README.md
----
+🔑 Admin Login
+Default Admin account (only this account has full control):
 
-## 🔑 Admin Login
+Email: itzzswatii@gmail.com
 
-- **Email:** `itzzswatii@gmail.com`  
-- **Password:** `12345678##@@`  
+Password: 12345678##@@
 
-Only Admin can **add/edit/delete** customers.  
-Users who sign up themselves are **read-only** by default.
+✅ Admin can: Add, Edit, Delete Customers
+✅ Users signing up themselves → read-only by default
 
----
-
-## 🏃‍♀️ Quick Start
-
-### 1️⃣ Clone the repo
-
-```bash
+🏃‍♀️ Quick Start
+1️⃣ Clone the repo
+bash
+Copy
+Edit
 git clone https://github.com/Swatii18/crm-portal.git
 cd crm-portal
-
- Install dependencies
+2️⃣ Install dependencies
+bash
+Copy
+Edit
 npm install
-
-Run locally
+3️⃣ Run locally
+bash
+Copy
+Edit
 npm start
+Now visit http://localhost:3000
 
-## 🛡️ Branching Workflow
+🛡️ Branching Workflow
+We use 2 main branches:
 
-We use **2 main branches**:
+dev → Active development branch
 
-- **dev** → Active development branch  
-- **prod** → Stable branch for deployment  
+prod → Stable branch for deployment
 
- **How we work:**  
-- New features/fixes → push to `dev`  
-- When stable → merge `dev` → `prod` → deploy
+✅ How we work:
 
-## 📝 License
+New features/fixes → push to dev
 
+When stable → merge dev → prod → deploy
+
+🚀 Deployment
+We recommend Netlify or Vercel for hosting.
+
+✅ Deploy to Netlify
+Go to Netlify Dashboard
+
+Click New site → Import from GitHub
+
+Select your repo crm-portal
+
+Choose prod branch
+
+Build command: npm run build
+
+Publish directory: build/
+
+Click Deploy
+
+✅ In 1-2 minutes your CRM will be live!
+
+🤝 Contributing
+Always create new branches from dev
+
+Test your changes
+
+Merge into prod only after approval
+
+📝 License
 MIT License © 2025 Swatii18
