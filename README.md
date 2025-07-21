@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# CRM Portal (React + Redux)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A **Customer Relationship Management (CRM)** portal built with **React, Redux, Material UI**, and **localStorage persistence**.  
+Supports **Admin & User roles**, secure authentication, and CRUD operations for customer management.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+✅ **User Authentication**
+- Signup (only Users by default)
+- Login with role-based access
+- Fixed **Admin credentials**:  
+  - **Email:** `itzzswatii@gmail.com`  
+  - **Password:** `12345678##@@`
+- Only Admins can manage customers  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ **Role-Based Dashboard**
+- **Admin** → Add, Edit, Delete customers  
+- **User** → Read-only access  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+✅ **Customer Management**
+- Search & filter customers  
+- Edit existing customer data  
+- Delete customers  
+- Data persists in **localStorage**
 
-### `npm test`
+✅ **Protected Routes**
+- Login required to access the dashboard  
+- Unauthorized users redirected to login  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+✅ **Branches**
+- `dev` → Active development  
+- `prod` → Stable, production-ready code  
 
-### `npm run build`
+✅ **Future Enhancements**
+- API backend integration  
+- Database persistence  
+- Toast notifications  
+- Deployment with CI/CD  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React 18**
+- **Redux Toolkit / Redux**
+- **React Router v6**
+- **Material UI (MUI)**  
+- **localStorage persistence**
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📂 Project Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+crm-portal/
+├── src/
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Login & Signup pages
+│ ├── redux/ # State management
+│ ├── App.js # Main routes & Dashboard
+│ └── index.js # Entry point
+├── public/
+├── package.json
+└── README.md
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔑 Admin Login
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Email:** `itzzswatii@gmail.com`  
+- **Password:** `12345678##@@`  
 
-## Learn More
+Only Admin can **add/edit/delete** customers.  
+Users who sign up themselves are **read-only** by default.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🏃‍♀️ Quick Start
 
-### Code Splitting
+### 1️⃣ Clone the repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+git clone https://github.com/Swatii18/crm-portal.git
+cd crm-portal
 
-### Analyzing the Bundle Size
+ Install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run locally
+npm start
 
-### Making a Progressive Web App
+## 🛡️ Branching Workflow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+We use **2 main branches**:
 
-### Advanced Configuration
+- **dev** → Active development branch  
+- **prod** → Stable branch for deployment  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+ **How we work:**  
+- New features/fixes → push to `dev`  
+- When stable → merge `dev` → `prod` → deploy
 
-### Deployment
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License © 2025 Swatii18
