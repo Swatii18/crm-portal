@@ -1,69 +1,67 @@
-// authActions.js
+// src/redux/actions/authActions.js
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
-export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const LOGOUT = 'LOGOUT';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 
-const ADMIN_EMAIL = 'itzzswatii@gmail.com';
-const ADMIN_PASSWORD = '12345678##@@';
+// ✅ Fixed SuperAdmin (cannot be removed/edited)
+const SUPERADMIN = {
+  id: 'superadmin-1',
+  name: 'Super Admin',
+  email: 'itzzswatii@gmail.com',
+  password: '12345678##@@',
+  role: 'SuperAdmin',
+};
 
-export const login = ({ email, password }) => (dispatch) => {
+// ✅ Always ensure SuperAdmin exists
+const ensureSuperAdmin = () => {
   let users = JSON.parse(localStorage.getItem('users')) || [];
-
-  // Ensure Admin exists in localStorage
-  const adminUser = users.find(u => u.email === ADMIN_EMAIL);
-  if (!adminUser) {
-    users.push({
-      name: 'Super Admin',
-      email: ADMIN_EMAIL,
-      password: ADMIN_PASSWORD,
-      role: 'Admin',
-    });
+  const exists = users.find((u) => u.email === SUPERADMIN.email);
+  if (!exists) {
+    users.push(SUPERADMIN);
     localStorage.setItem('users', JSON.stringify(users));
   }
+  return users;
+};
 
-  // Find user by email & password
-  const foundUser = users.find(
-    (u) => u.email === email && u.password === password
-  );
+// ✅ LOGIN
+export const login = (email, password) => (dispatch) => {
+  const users = ensureSuperAdmin(); // always include SuperAdmin
+  const user = users.find((u) => u.email === email && u.password === password);
 
-  if (foundUser) {
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: foundUser,
-    });
-    localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+  if (user) {
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+    dispatch({ type: LOGIN_SUCCESS, payload: user });
   } else {
-    dispatch({ type: LOGIN_FAIL });
+    dispatch({ type: LOGIN_FAIL, payload: 'Invalid email or password' });
   }
 };
 
-export const signup = (newUser) => (dispatch) => {
-  let users = JSON.parse(localStorage.getItem('users')) || [];
+// ✅ SIGNUP (default role = User)
+export const signup = (userData) => (dispatch) => {
+  let users = ensureSuperAdmin();
 
-  // Prevent signup as Admin via form
-  if (newUser.email === ADMIN_EMAIL) {
-    alert('Admin account is fixed. Please login with admin credentials.');
+  if (users.find((u) => u.email === userData.email)) {
+    dispatch({ type: LOGIN_FAIL, payload: 'Email already exists' });
     return;
   }
 
-  // Always assign role 'User' to new signups (no self-signup admin)
-  newUser.role = 'User';
-
-  // Prevent duplicate email signups
-  const exists = users.find(u => u.email === newUser.email);
-  if (exists) {
-    alert('Email already registered. Please login.');
-    return;
-  }
+  const newUser = {
+    id: Date.now().toString(),
+    name: userData.name,
+    email: userData.email,
+    password: userData.password,
+    role: 'User',
+  };
 
   users.push(newUser);
   localStorage.setItem('users', JSON.stringify(users));
 
-  dispatch({ type: SIGNUP_SUCCESS });
+  dispatch({ type: SIGNUP_SUCCESS, payload: newUser });
 };
 
+// ✅ LOGOUT
 export const logout = () => (dispatch) => {
   localStorage.removeItem('loggedInUser');
   dispatch({ type: LOGOUT });
